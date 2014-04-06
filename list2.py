@@ -29,30 +29,32 @@ def remove_adjacent(nums):
 # pass of both lists.
 def linear_merge(list1, list2):
   # +++your code here+++
-  res = []
-  l1 = len(list1) - 1
-  l2 = len(list2) - 1
+  list3 = []
+  l1 = len(list1)
+  l2 = len(list2)
 
-  count1 = 0
-  count2 = 0
+  a = 0
+  b = 0
+  # count = 0
 
-  while count1 != l1 or count2 != l2:
-    if list1[count1] <= list2[count2]:
-      res.append(list1[count1])
-      count1 += 1
+  while True:
+    if list1[a]  < list2[b]:
+      list3.append(list1[a])
+      a += 1
     else:
-      res.append(list2[count2])
-      count2 += 1
+      list3.append(list2[b])
+      b += 1
+    if a == l1 or b == l2:
+      break
 
-  if  count1 != l1:
-    while count1 != l1:
-      res.append(list1[count1])
-      count1 += 1
-  if count2 != l2:
-    while count2 != l2:
-      res.append(list2[count2])
-      count2 += 1
-  return res
+  while a != l1:
+    list3.append(list1[a])
+    a+= 1
+
+  while b != l2:
+    list3.append(list2[b])
+    b += 1
+  return list3
 
 # Note: the solution above is kind of cute, but unforunately list.pop(0)
 # is not constant time with the standard python list implementation, so
